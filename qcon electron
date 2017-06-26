@@ -1,28 +1,49 @@
-Electron Start to Production 10:35 QCon Monday June 26 Notes:
+# Electron Start to Production 10:35 QCon Monday June 26 Notes:
 
-Jessica Lord's  Essential Electron jlord.us
+Jessica Lord's  Essential Electron jlord.us/essential-electron
+@paulcbetts
 
 electron-forge
-- Includes Packaging, compilation, and publishing,
-- 
+- Includes Packaging, compilation, and publishing
 
 electron-forge init
 electron-forge start 
 
-Windows:
+## Windows:
 squirrel for windows, squirrel.windows installer and update framework
 
 (Maybe use .appx packages to deploy in windows store)
 They run in sandbox
 No built in way to update appx apps
 
-MacOS:
+## MacOS:
 Distributed as zip files
 FOr mac app store, must live in restrictive sandbox
 Very self contained, hard to update
 Has Squirrel for Mac, no install step, just unzip
 Updates in the background, and waits for an exit, then moves to new version
 
-Linux:
+Must sign apps with apple signature due to Gatekeeper, about 100/year to Apple
+Disable Gatekeeper to develop locally, or right-click open to one off disable
+This is only for app store, so the zipped files don't need that
+
+Use Xcode for signatures to an app
+- Developer, for your machine only
+- developer id for distributing aps yourself, get one download
+- Mac app application installer cetificate, used only for app store
+
+## Linux:
 Debian packagesCan download and install via UI, or dpkg command
 Set up Update repositiory and configure on user system. 
+
+Distributing:
+Authenticode certificate for signing
+Squirrel Hooks: 
+Invokes your app with parameters, exit once you finish
+Must create a start menu shortcut
+Debugging:
+    Appdata/local/temp/squirreltemp
+
+App will end up in appdata/local/packageid
+Log files for updating is in there
+RELEASES file for squirrel windows, deltas changes for your appx
