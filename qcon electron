@@ -1,0 +1,28 @@
+Electron Start to Production 10:35 QCon Monday June 26 Notes:
+
+Jessica Lord's  Essential Electron jlord.us
+
+electron-forge
+- Includes Packaging, compilation, and publishing,
+- 
+
+electron-forge init
+electron-forge start 
+
+Windows:
+squirrel for windows, squirrel.windows installer and update framework
+
+(Maybe use .appx packages to deploy in windows store)
+They run in sandbox
+No built in way to update appx apps
+
+MacOS:
+Distributed as zip files
+FOr mac app store, must live in restrictive sandbox
+Very self contained, hard to update
+Has Squirrel for Mac, no install step, just unzip
+Updates in the background, and waits for an exit, then moves to new version
+
+Linux:
+Debian packagesCan download and install via UI, or dpkg command
+Set up Update repositiory and configure on user system. 
